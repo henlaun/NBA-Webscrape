@@ -10,7 +10,7 @@ soup = bs.BeautifulSoup(sauce, 'lxml')
 
 csv_file = open(filename, 'w')
 csv_writer = csv.writer(csv_file, lineterminator = '\n')
-csv_writer.writerow(['Team','Home','Away'])
+csv_writer.writerow(['Team','Overall','Home','Away'])
 
 x = []
 y = []
@@ -18,7 +18,7 @@ for info in soup.find_all('td'):
     x.append(info.text)
 
 for i in range(30):
-    tup = (x[8*i+1], x[8*i+5], x[8*i+6])
-    csv_writer.writerow([tup[0], tup[1], tup[2]])
+    tup = (x[8*i+1], x[8*i+2], x[8*i+5], x[8*i+6])
+    csv_writer.writerow([tup[0], tup[1], tup[2], tup[3]])
 
 csv_file.close() 
